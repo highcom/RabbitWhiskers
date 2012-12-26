@@ -24,10 +24,12 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	static float moveY1;
 	static float moveX2;
 	static float moveY2;
-	SoundPool soundPool;
+	static SoundPool soundPool;
 	static int volume;
 	static int senyaa;
 	static int seita;
+	static int setempo;
+	static int sesyu;
 	static int width;
 	static int height;
 	static int backgroundID;
@@ -42,12 +44,14 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	static int longWhiskersID;
 	static int shortWhiskersID;
 	static int numberID;
+	static int ngID;
 	static int shuID;
+	static int gameOverFlg;
 	// 基準位置
 	static float x_left, x_right, y_top, y_under;
+	// テンポの効果音フラグ
+	static int tempo1, tempo2, tempo3;
 
-	static final int READY_TIME = 2000;
-	static final int RAP_TIME = 700;
 	private int gameState;
 	private long startTime;
 	private long rapTime;
@@ -55,6 +59,7 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	private float readyScale;
 	static float scale;
 
+	// うさぎの設定情報を保持するクラス
 	class RabbitBase {
 		// ひげの初期位置を設定
 		public RabbitBase() {
@@ -83,6 +88,10 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	private RabbitBase rabbitBase1;
 	private RabbitBase rabbitBase2;
 
+	// テンポ
+	static final int READY_TIME = 2000;
+	static final int RAP_TIME = 700;
+	// ゲームのステータス
 	private final int READY = 1;
 	private final int PLAYING = 2;
 	private final int END = 3;
@@ -94,10 +103,21 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	// うさぎの表示位置調整
 	static final float POSITION = 180f;
 
+	/*
+	 * コンストラクタ
+	 */
 	public RabbitWhiskersGame() {
+		tempo1 = 0;
+		tempo2 = 0;
+		tempo3 = 0;
+		gameOverFlg = 0;
 		readyScale = 0.5f;
 	}
 
+	/*
+	 * 画面の生成時(非 Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // サウンドプレイヤーの生成
@@ -107,6 +127,8 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
         soundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
         senyaa = soundPool.load(context, R.raw.rabbit_nyaa, 1);
         seita = soundPool.load(context, R.raw.rabbit_ita, 1);
+        setempo = soundPool.load(context, R.raw.tempo, 1);
+        sesyu = soundPool.load(context, R.raw.tempo_syu, 1);
 
         // ウィンドウマネージャのインスタンス取得
         WindowManager wm = (WindowManager)getSystemService(WINDOW_SERVICE);
@@ -140,6 +162,8 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
         rabbitBase2 = new RabbitBase();
         rabbitBase2.startPosX = width;
         rabbitBase2.movePosX = width;
+        // ステータスの初期化
+        RabbitDrawer.initRabbitDrawer();
 
         // タイトルバーを消す
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -152,6 +176,10 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
         setContentView(gLSurfaceView);
     }
 
+    /*
+     * ひげをタッチしたときのイベント(非 Javadoc)
+     * @see android.app.Activity#onTouchEvent(android.view.MotionEvent)
+     */
     public boolean onTouchEvent(MotionEvent event) {
     	if (gameState == PLAYING) {
     		switch (event.getAction()) {
@@ -183,6 +211,10 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
         return true;
     }
 
+    /*
+     * フレーム毎に呼び出される(非 Javadoc)
+     * @see android.opengl.GLSurfaceView.Renderer#onDrawFrame(javax.microedition.khronos.opengles.GL10)
+     */
     public void onDrawFrame(GL10 gl) {
     	// 描画用バッファをクリア
     	gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
@@ -198,23 +230,42 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
     		}
     		TextureDrawer.drawTexture(gl, readyID, width/2, height/2, width, width, 0.0f, scale+readyScale, scale+readyScale);
     	} else if (rapTime - startTime <= READY_TIME + RAP_TIME) { // 1を描画
+    		if (tempo1 == 0) {
+    			soundPool.play(setempo, (float)volume, (float)volume, 0, 0, 1.0f);
+    			tempo1 = 1;
+    		}
     		TextureDrawer.drawTexture(gl, oneID, width/2, height/2, width, width, 0.0f, scale, scale);
     	} else if (READY_TIME + RAP_TIME < rapTime - startTime && rapTime - startTime <= READY_TIME + RAP_TIME*2) { // 2を描画
+    		if (tempo2 == 0) {
+    			soundPool.play(setempo, (float)volume, (float)volume, 0, 0, 1.0f);
+    			tempo2 = 1;
+    		}
     		TextureDrawer.drawTexture(gl, twoID, width/2, height/2, width, width, 0.0f, scale, scale);
     	} else if (READY_TIME + RAP_TIME*2 < rapTime - startTime && rapTime - startTime <= READY_TIME + RAP_TIME*3) { // startを描画
+    		if (tempo3 == 0) {
+    			soundPool.play(sesyu, (float)volume, (float)volume, 0, 0, 1.0f);
+    			tempo3 = 1;
+    		}
     		TextureDrawer.drawTexture(gl, startID, width/2, height/2, width, width, 0.0f, scale, scale);
     	} else {
     		gameState = PLAYING;
     		RabbitDrawer.cycleTime(gl);
-    		RabbitDrawer.countSuccess(gl);
+    		RabbitDrawer.drawSuccessFailure(gl);
     		RabbitDrawer.drawScoreborad(gl);
         	RabbitDrawer.judgmentTiming(gl, soundPool, rabbitBase1, rabbitBase2);
         	 // うさぎを描画
     		RabbitDrawer.rabbitDraw(gl, rabbitBase1);
     		RabbitDrawer.rabbitDraw(gl, rabbitBase2);
+    		if (gameOverFlg == 1) {
+    			finish();
+    		}
     	}
     }
 
+    /*
+     * 画面が縦または横になった場合に呼び出される(非 Javadoc)
+     * @see android.opengl.GLSurfaceView.Renderer#onSurfaceChanged(javax.microedition.khronos.opengles.GL10, int, int)
+     */
     public void onSurfaceChanged(GL10 gl, int width, int height) {
     	// ビューボートをサイズに合わせてセットしなおす
     	gl.glViewport(0, 0, width, height);
@@ -229,7 +280,10 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
     	GLU.gluOrtho2D(gl, 0.0f, width, 0.0f, height);
     }
 
-    // サーフェイスが生成される際、または再生成される際に呼び出される
+    /*
+     * サーフェイスが生成される際、または再生成される際に呼び出される(非 Javadoc)
+     * @see android.opengl.GLSurfaceView.Renderer#onSurfaceCreated(javax.microedition.khronos.opengles.GL10, javax.microedition.khronos.egl.EGLConfig)
+     */
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
     	// ディザを無効化
     	gl.glDisable(GL10.GL_DITHER);
@@ -261,9 +315,31 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
     	longWhiskersID = TextureLoader.loadTexture(gl, this, R.drawable.long_whiskers);
     	shortWhiskersID = TextureLoader.loadTexture(gl, this, R.drawable.short_whiskers);
     	numberID = TextureLoader.loadTexture(gl, this, R.drawable.number);
+    	ngID = TextureLoader.loadTexture(gl, this, R.drawable.ng);
     	shuID = TextureLoader.loadTexture(gl, this, R.drawable.shu);
 
     	// 開始時間を取得
     	startTime = System.currentTimeMillis();
     }
+
+    public void gameOver() {
+    	finish();
+    }
+
+	// ポーズ状態からの復旧時やアクティビティ生成時などに呼び出される
+	protected void inResume() {
+		super.onResume();
+		gLSurfaceView.onResume();
+	}
+
+	// アクティビティ一時停止や終了時に呼び出される
+	protected void onPause() {
+		super.onPause();
+		gLSurfaceView.onPause();
+		// サウンドプールを開放する
+		soundPool.release();
+		// 一時停止した場合はタイトル画面に戻る
+		finish();
+	}
+
 }

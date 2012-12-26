@@ -5,23 +5,39 @@ import javax.microedition.khronos.opengles.GL10;
 import android.media.SoundPool;
 
 public class RabbitDrawer extends RabbitWhiskersGame {
-	// 判定
+
 	private static final int OK = 1;
 	private static final int NG = 0;
-
-	private static int cnt;
-	private static int longPos;
-	private static int[] whiskersID = {0, 0, 0, 0};
 	private static final float NUM_H = 120f;
 	private static final float NUM_W = 60f;
-	private static long startTime = 0;
-	private static long touchTime = 0;
-	private static long moveTime = 0;
-	private static long rapTime = 0;
-	private static int judge1 = NG;
-	private static int judge2 = NG;
-	private static int judgeflg = 0;
 
+	private static int okcnt;
+	private static int ngcnt;
+	private static int longPos;
+	private static int[] whiskersID = {0, 0, 0, 0};
+	private static long startTime;
+	private static long touchTime;
+	private static long moveTime;
+	private static long rapTime;
+	private static int judge1;
+	private static int judge2;
+	private static int judgeflg;
+
+	static void initRabbitDrawer() {
+		okcnt = 0;
+		ngcnt = 0;
+		longPos = 0;
+		startTime = 0;
+		touchTime = 0;
+		moveTime = 0;
+		rapTime = 0;
+		judge1 = NG;
+		judge2 = NG;
+		judgeflg = 0;
+	}
+	/*
+	 * うさぎを描画するクラス
+	 */
     static void rabbitDraw(GL10 gl, RabbitBase rabbitBase) {
     	// うさぎを描画
     	TextureDrawer.drawTextureRabbit(gl, rabbitBase.rabbitBaseID, width/2+rabbitBase.movePosX, height/2-POSITION*scale, R_B_WIDTH, R_B_HEIGHT, 0.0f, scale, scale);
@@ -103,41 +119,72 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     			rabbitBase.movePosX = rabbitBase.startPosX;
     			rabbitBase.nextFlg = 0;
     			rabbitBase.rabbitBaseID = nomalRabbitID;
+    			tempo1 = 0;
+    			tempo2 = 0;
+    			tempo3 = 0;
     		}
     	}
     }
 
-    static void countSuccess(GL10 gl)
+    /*
+     * ひげの判定をするクラス
+     */
+    static void drawSuccessFailure(GL10 gl)
     {
-    	TextureDrawer.drawTexture(gl, numberID, width-(NUM_W*7/4+25)*scale, height-(NUM_H/2+50)*scale, (int)NUM_W/2, (int)NUM_H/2, 0.0f, scale, scale, cnt/1000);
-    	TextureDrawer.drawTexture(gl, numberID, width-(NUM_W*5/4+25)*scale, height-(NUM_H/2+50)*scale, (int)NUM_W/2, (int)NUM_H/2, 0.0f, scale, scale, (cnt%1000)/100);
-    	TextureDrawer.drawTexture(gl, numberID, width-(NUM_W*3/4+25)*scale, height-(NUM_H/2+50)*scale, (int)NUM_W/2, (int)NUM_H/2, 0.0f, scale, scale, (cnt%100)/10);
-    	TextureDrawer.drawTexture(gl, numberID, width-(NUM_W/4+25)*scale, height-(NUM_H/2+50)*scale, (int)NUM_W/2, (int)NUM_H/2, 0.0f, scale, scale, cnt%10);
+    	TextureDrawer.drawTexture(gl, numberID, width-(NUM_W*7/4+25)*scale, height-(NUM_H/2+50)*scale, (int)NUM_W/2, (int)NUM_H/2, 0.0f, scale, scale, okcnt/1000);
+    	TextureDrawer.drawTexture(gl, numberID, width-(NUM_W*5/4+25)*scale, height-(NUM_H/2+50)*scale, (int)NUM_W/2, (int)NUM_H/2, 0.0f, scale, scale, (okcnt%1000)/100);
+    	TextureDrawer.drawTexture(gl, numberID, width-(NUM_W*3/4+25)*scale, height-(NUM_H/2+50)*scale, (int)NUM_W/2, (int)NUM_H/2, 0.0f, scale, scale, (okcnt%100)/10);
+    	TextureDrawer.drawTexture(gl, numberID, width-(NUM_W/4+25)*scale, height-(NUM_H/2+50)*scale, (int)NUM_W/2, (int)NUM_H/2, 0.0f, scale, scale, okcnt%10);
+    	for (int i = 0; i < ngcnt; i++) {
+    		TextureDrawer.drawTexture(gl, ngID, width-(NUM_W*(7-i*2)/4+25)*scale, height-(NUM_H/2+100)*scale, (int)NUM_W/2, (int)NUM_W/2, 0.0f, scale, scale);
+    	}
     }
 
+    /*
+     * スコアボードを描画するクラス
+     */
     static void drawScoreborad(GL10 gl)
     {
     	// スコアボートを描画
     	TextureDrawer.drawTexture(gl, boardID, width/2, height-(NUM_H+30)*scale, width, width, 0.0f, 1.0f, 1.0f);
     }
+
+    /*
+     * タイムサイクルを管理するクラス
+     */
     static void cycleTime(GL10 gl)
     {
     	if (startTime == 0) {
+    		tempo1 = 0;
+    		tempo2 = 0;
+    		tempo3 = 0;
     		startTime = System.currentTimeMillis();
     		whiskersSetting();
     	} else {
     		rapTime = System.currentTimeMillis();
     	}
     	if (RAP_TIME < rapTime - startTime) {
+    		if (tempo1 == 0) {
+    			soundPool.play(setempo, (float)volume, (float)volume, 0, 0, 1.0f);
+    			tempo1 = 1;
+    		}
     		TextureDrawer.drawTexture(gl, numberID, NUM_W/2*scale, height-(NUM_H/2+30)*scale, (int)NUM_W, (int)NUM_H, 0.0f, scale, scale, 1);
     		if (RAP_TIME*2 < rapTime - startTime) {
+        		if (tempo2 == 0) {
+        			soundPool.play(setempo, (float)volume, (float)volume, 0, 0, 1.0f);
+        			tempo2 = 1;
+        		}
     			TextureDrawer.drawTexture(gl, numberID, NUM_W*3/2*scale, height-(NUM_H/2+30)*scale, (int)NUM_W, (int)NUM_H, 0.0f, scale, scale, 2);
     			if (RAP_TIME*3 < rapTime - startTime) {
+    	    		if (tempo3 == 0) {
+    	    			soundPool.play(sesyu, (float)volume, (float)volume, 0, 0, 1.0f);
+    	    			tempo3 = 1;
+    	    		}
         			TextureDrawer.drawTexture(gl, shuID, NUM_W*3*scale, height-(NUM_H/2+30)*scale, (int)NUM_W*2, (int)NUM_H, 0.0f, scale, scale);
     			}
     		}
     	}
-    	if (RAP_TIME*4 < rapTime - startTime) {
+    	if (RAP_TIME*4 < rapTime - startTime && ngcnt < 3) {
     		// 状態をリセットする
     		touchX = 0;
     		touchY = 0;
@@ -148,27 +195,43 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     		judge2 = NG;
     		judgeflg = 0;
     	}
+    	// ゲームオーバー
+    	if (RAP_TIME*6 < rapTime - startTime && ngcnt >= 3) {
+    		gameOverFlg = 1;
+    	}
     }
 
+    /*
+     * 長いひげを設定するクラス
+     */
     static void whiskersSetting()
     {
     	for (int i =0; i < 4; i++) {
     		whiskersID[i] = shortWhiskersID;
     	}
-    	longPos = (int)(Math.random()*10.0d)%4;
+    	longPos = (int)(Math.random()*100.0d)%4;
     	whiskersID[longPos] = longWhiskersID;
     }
 
+    /*
+     * タッチしたタイミングを設定するクラス
+     */
     static void setTouchTime()
     {
     	touchTime = System.currentTimeMillis();
     }
 
+    /*
+     * ひげを動かしたタイミングを設定するクラス
+     */
     static void setMoveTime()
     {
     	moveTime = System.currentTimeMillis();
     }
 
+    /*
+     * ひげを抜いたタイミングを判定するクラス
+     */
     static void judgmentTiming(GL10 gl, SoundPool soundPool, RabbitBase rabbitBase1, RabbitBase rabbitBase2)
     {
     	// タッチした瞬間のタイミングを判定
@@ -224,17 +287,9 @@ public class RabbitDrawer extends RabbitWhiskersGame {
 
     	if (RAP_TIME*3+400 < rapTime - startTime) {
         	// 判定によって、笑顔か不満顔かを描画
-    		if(judge1 == OK && judge2 == OK) {
-    			// 笑顔
-        		TextureDrawer.drawTexture(gl, numberID, 32, 64, 128, 128, 0.0f, 1.0f, 1.0f, 1);
-        	} else {
-        		// 不満顔
-        		TextureDrawer.drawTexture(gl, numberID, 32, 64, 128, 128, 0.0f, 1.0f, 1.0f, 2);
-        	}
-
         	if(judgeflg == 0) {
     			if (judge1 == OK && judge2 == OK) {
-        			cnt++;
+        			okcnt++;
         			// 画面に表示されているうさぎだけ笑顔にする。
         			if (rabbitBase1.startPosX == 0) {
             			rabbitBase1.rabbitBaseID = okRabbitID;
@@ -244,6 +299,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
         			}
     				soundPool.play(senyaa, (float)volume, (float)volume, 0, 0, 1.0f);
     			} else {
+    				ngcnt++;
         			// 画面に表示されているうさぎだけうーんにする。
         			if (rabbitBase1.startPosX == 0) {
             			rabbitBase1.rabbitBaseID = ngRabbitID;
@@ -257,7 +313,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     		}
     	}
 
-    	if (RAP_TIME*3+500 < rapTime - startTime) {
+    	if (RAP_TIME*3+500 < rapTime - startTime && ngcnt < 3) {
     		rabbitBase1.nextFlg = 1;
     		rabbitBase2.nextFlg = 1;
     	}
