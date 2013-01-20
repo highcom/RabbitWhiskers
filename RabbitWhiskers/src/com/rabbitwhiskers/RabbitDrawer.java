@@ -11,8 +11,6 @@ public class RabbitDrawer extends RabbitWhiskersGame {
 	private static final float NUM_H = 120f;
 	private static final float NUM_W = 60f;
 
-	private static int okcnt;
-	private static int ngcnt;
 	private static int longPos;
 	private static int[] whiskersID = {0, 0, 0, 0};
 	private static long startTime;
@@ -176,10 +174,6 @@ public class RabbitDrawer extends RabbitWhiskersGame {
         		}
     			TextureDrawer.drawTexture(gl, numberID, NUM_W*3/2*scale, height-(NUM_H/2+30)*scale, (int)NUM_W, (int)NUM_H, 0.0f, scale, scale, 2);
     			if (RAP_TIME*3 < rapTime - startTime) {
-    	    		if (tempo3 == 0) {
-    	    			soundPool.play(sesyu, (float)volume, (float)volume, 0, 0, 1.0f);
-    	    			tempo3 = 1;
-    	    		}
         			TextureDrawer.drawTexture(gl, shuID, NUM_W*3*scale, height-(NUM_H/2+30)*scale, (int)NUM_W*2, (int)NUM_H, 0.0f, scale, scale);
     			}
     		}
@@ -197,7 +191,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     	}
     	// ゲームオーバー
     	if (RAP_TIME*6 < rapTime - startTime && ngcnt >= 3) {
-    		gameOverFlg = 1;
+    		gameState = GAMEOVER;
     	}
     }
 

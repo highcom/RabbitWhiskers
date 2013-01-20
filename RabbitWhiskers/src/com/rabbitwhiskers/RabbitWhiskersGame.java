@@ -5,6 +5,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.opengl.GLSurfaceView;
@@ -18,20 +19,27 @@ import android.view.WindowManager;
 public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Renderer {
 	// GLSurfaceView
 	private GLSurfaceView gLSurfaceView;
+	// 成功と失敗のカウント
+	static int okcnt;
+	static int ngcnt;
+	// タッチ座標
 	static float touchX;
 	static float touchY;
 	static float moveX1;
 	static float moveY1;
 	static float moveX2;
 	static float moveY2;
+	// サウンドＩＤ
 	static SoundPool soundPool;
 	static int volume;
 	static int senyaa;
 	static int seita;
 	static int setempo;
 	static int sesyu;
+	// ディスプレイサイズ
 	static int width;
 	static int height;
+	// グラフィックＩＤ
 	static int backgroundID;
 	private int readyID;
 	static int oneID;
@@ -46,16 +54,16 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	static int numberID;
 	static int ngID;
 	static int shuID;
-	static int gameOverFlg;
+	// ゲームの状態
+	static int gameState;
 	// 基準位置
 	static float x_left, x_right, y_top, y_under;
 	// テンポの効果音フラグ
 	static int tempo1, tempo2, tempo3;
-
-	private int gameState;
+	// ゲームの時間
 	private long startTime;
 	private long rapTime;
-
+	// ディスプレイサイズに合わせたスケール
 	private float readyScale;
 	static float scale;
 
@@ -92,9 +100,9 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	static final int READY_TIME = 2000;
 	static final int RAP_TIME = 700;
 	// ゲームのステータス
-	private final int READY = 1;
-	private final int PLAYING = 2;
-	private final int END = 3;
+	static final int READY = 1;
+	static final int PLAYING = 2;
+	static final int GAMEOVER = 3;
 	// うさぎの基準のサイズ
 	static final int R_B_HEIGHT = 800;
 	static final int R_B_WIDTH = 480;
@@ -110,7 +118,6 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 		tempo1 = 0;
 		tempo2 = 0;
 		tempo3 = 0;
-		gameOverFlg = 0;
 		readyScale = 0.5f;
 	}
 
@@ -197,6 +204,13 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
         		case MotionEvent.ACTION_MOVE:
         			moveX2 = (float)event.getX();
         			moveY2 = (float)(height - event.getY()+POSITION*scale);
+        			// ある程度移動したら、移動したと判定する
+        			if (Math.abs(moveX2 - touchX) > 10 || Math.abs(moveY2 - touchY) > 10) {
+        				if (tempo3 == 0) {
+        					soundPool.play(sesyu, (float)volume, (float)volume, 0, 0, 1.0f);
+        					tempo3 = 1;
+        				}
+        			}
         			RabbitDrawer.setMoveTime();
         			break;
     		}
@@ -256,8 +270,8 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
         	 // うさぎを描画
     		RabbitDrawer.rabbitDraw(gl, rabbitBase1);
     		RabbitDrawer.rabbitDraw(gl, rabbitBase2);
-    		if (gameOverFlg == 1) {
-    			finish();
+    		if (gameState == GAMEOVER) {
+    			gameOver();
     		}
     	}
     }
@@ -323,7 +337,12 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
     }
 
     public void gameOver() {
-    	finish();
+		// インテントのインスタンス生成
+		Intent intent = new Intent(RabbitWhiskersGame.this, RabbitRanking.class);
+		intent.putExtra("SCORE", okcnt);
+		// 次画面のアクティビティ起動
+		startActivity(intent);
+		finish();
     }
 
 	// ポーズ状態からの復旧時やアクティビティ生成時などに呼び出される
