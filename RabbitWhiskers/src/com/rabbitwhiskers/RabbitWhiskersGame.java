@@ -22,6 +22,8 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	// 成功と失敗のカウント
 	static int okcnt;
 	static int ngcnt;
+	// スピードアップ回数
+	static int up;
 	// タッチ座標
 	static float touchX;
 	static float touchY;
@@ -36,12 +38,14 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	static int seita;
 	static int setempo;
 	static int sesyu;
+	static int sespeedup;
 	// ディスプレイサイズ
 	static int width;
 	static int height;
 	// グラフィックＩＤ
 	static int backgroundID;
 	private int readyID;
+	private int speedupID;
 	static int oneID;
 	static int twoID;
 	static int startID;
@@ -59,10 +63,10 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	// 基準位置
 	static float x_left, x_right, y_top, y_under;
 	// テンポの効果音フラグ
-	static int tempo1, tempo2, tempo3;
+	static int tempo0, tempo1, tempo2, tempo3;
 	// ゲームの時間
-	private long startTime;
-	private long rapTime;
+	static long gameStartTime;
+	static long gameRapTime;
 	// ディスプレイサイズに合わせたスケール
 	private float readyScale;
 	static float scale;
@@ -98,7 +102,10 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 
 	// テンポ
 	static final int READY_TIME = 2000;
-	static final int RAP_TIME = 700;
+	static int RAP_TIME;
+	static int MARGIN_TIME;
+	static int SPEEDUP_CNT;
+	static int MOVE_SPEED;
 	// ゲームのステータス
 	static final int READY = 1;
 	static final int PLAYING = 2;
@@ -115,6 +122,14 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	 * コンストラクタ
 	 */
 	public RabbitWhiskersGame() {
+		RAP_TIME = 700;
+		MARGIN_TIME = 200;
+		SPEEDUP_CNT = 3;
+		MOVE_SPEED = 30;
+		up = 0;
+		okcnt = 0;
+		ngcnt = 0;
+		tempo0 = 0;
 		tempo1 = 0;
 		tempo2 = 0;
 		tempo3 = 0;
@@ -131,11 +146,12 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
         Context context = this.getApplicationContext();
         AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         volume = audio.getStreamVolume(AudioManager.STREAM_RING);
-        soundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
+        soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         senyaa = soundPool.load(context, R.raw.rabbit_nyaa, 1);
         seita = soundPool.load(context, R.raw.rabbit_ita, 1);
         setempo = soundPool.load(context, R.raw.tempo, 1);
         sesyu = soundPool.load(context, R.raw.tempo_syu, 1);
+        sespeedup = soundPool.load(context, R.raw.tempo_speedup, 1);
 
         // ウィンドウマネージャのインスタンス取得
         WindowManager wm = (WindowManager)getSystemService(WINDOW_SERVICE);
@@ -170,7 +186,8 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
         rabbitBase2.startPosX = width;
         rabbitBase2.movePosX = width;
         // ステータスの初期化
-        RabbitDrawer.initRabbitDrawer();
+        RabbitDrawer.initRabbitDrawer(rabbitBase1);
+        RabbitDrawer.initRabbitDrawer(rabbitBase2);
 
         // タイトルバーを消す
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -234,28 +251,36 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
     	gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
     	// 背景を描画
     	TextureDrawer.drawTexture(gl, backgroundID, width/2, height/2, width, height, 0.0f, 1.0f, 1.0f);
-    	rapTime = System.currentTimeMillis();
+    	gameRapTime = System.currentTimeMillis();
 
-    	if (rapTime - startTime <= READY_TIME) { // readyを描画
+    	if (gameRapTime - gameStartTime <= READY_TIME) { // readyを描画
     		gameState = READY;
     		readyScale -= 0.02f;
     		if (readyScale < 0.0f) {
     			readyScale = 0.0f;
     		}
-    		TextureDrawer.drawTexture(gl, readyID, width/2, height/2, width, width, 0.0f, scale+readyScale, scale+readyScale);
-    	} else if (rapTime - startTime <= READY_TIME + RAP_TIME) { // 1を描画
+    		if (tempo0 == 0) {
+    			soundPool.play(sespeedup, (float)volume, (float)volume, 0, 0, 1.0f);
+    			tempo0 = 1;
+    		}
+    		if (up == 0) {
+    			TextureDrawer.drawTexture(gl, readyID, width/2, height/2, width, width, 0.0f, scale+readyScale, scale+readyScale);
+    		} else {
+    			TextureDrawer.drawTexture(gl, speedupID, width/2, height/2, width, width, 0.0f, scale+readyScale, scale+readyScale);
+    		}
+    	} else if (gameRapTime - gameStartTime <= READY_TIME + RAP_TIME) { // 1を描画
     		if (tempo1 == 0) {
     			soundPool.play(setempo, (float)volume, (float)volume, 0, 0, 1.0f);
     			tempo1 = 1;
     		}
     		TextureDrawer.drawTexture(gl, oneID, width/2, height/2, width, width, 0.0f, scale, scale);
-    	} else if (READY_TIME + RAP_TIME < rapTime - startTime && rapTime - startTime <= READY_TIME + RAP_TIME*2) { // 2を描画
+    	} else if (READY_TIME + RAP_TIME < gameRapTime - gameStartTime && gameRapTime - gameStartTime <= READY_TIME + RAP_TIME*2) { // 2を描画
     		if (tempo2 == 0) {
     			soundPool.play(setempo, (float)volume, (float)volume, 0, 0, 1.0f);
     			tempo2 = 1;
     		}
     		TextureDrawer.drawTexture(gl, twoID, width/2, height/2, width, width, 0.0f, scale, scale);
-    	} else if (READY_TIME + RAP_TIME*2 < rapTime - startTime && rapTime - startTime <= READY_TIME + RAP_TIME*3) { // startを描画
+    	} else if (READY_TIME + RAP_TIME*2 < gameRapTime - gameStartTime && gameRapTime - gameStartTime <= READY_TIME + RAP_TIME*3) { // startを描画
     		if (tempo3 == 0) {
     			soundPool.play(sesyu, (float)volume, (float)volume, 0, 0, 1.0f);
     			tempo3 = 1;
@@ -317,6 +342,7 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
     	// リソース読み込み
     	backgroundID = TextureLoader.loadTexture(gl, this, R.drawable.background_game);
     	readyID = TextureLoader.loadTexture(gl, this, R.drawable.ready);
+    	speedupID = TextureLoader.loadTexture(gl, this, R.drawable.speedup);
     	oneID = TextureLoader.loadTexture(gl, this, R.drawable.one);
     	twoID = TextureLoader.loadTexture(gl, this, R.drawable.two);
     	startID = TextureLoader.loadTexture(gl, this, R.drawable.start);
@@ -333,7 +359,7 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
     	shuID = TextureLoader.loadTexture(gl, this, R.drawable.shu);
 
     	// 開始時間を取得
-    	startTime = System.currentTimeMillis();
+    	gameStartTime = System.currentTimeMillis();
     }
 
     public void gameOver() {

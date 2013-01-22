@@ -13,6 +13,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
 
 	private static int longPos;
 	private static int[] whiskersID = {0, 0, 0, 0};
+	private static int[] speedup_cnt = {3, 10, 15, 20, -1};
 	private static long startTime;
 	private static long touchTime;
 	private static long moveTime;
@@ -21,9 +22,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
 	private static int judge2;
 	private static int judgeflg;
 
-	static void initRabbitDrawer() {
-		okcnt = 0;
-		ngcnt = 0;
+	static void initRabbitDrawer(RabbitBase rabbitBase) {
 		longPos = 0;
 		startTime = 0;
 		touchTime = 0;
@@ -32,9 +31,22 @@ public class RabbitDrawer extends RabbitWhiskersGame {
 		judge1 = NG;
 		judge2 = NG;
 		judgeflg = 0;
+		rabbitBase.x1 = x_left;
+		rabbitBase.y1 = y_top;
+		rabbitBase.x2 = x_right;
+		rabbitBase.y2 = y_top;
+		rabbitBase.x3 = x_left;
+		rabbitBase.y3 = y_under;
+		rabbitBase.x4 = x_right;
+		rabbitBase.y4 = y_under;
+		rabbitBase.rabbitBaseID = nomalRabbitID;
+		tempo0 = 0;
+		tempo1 = 0;
+		tempo2 = 0;
+		tempo3 = 0;
 	}
 	/*
-	 * うさぎを描画するクラス
+	 * うさぎを描画するメソッド
 	 */
     static void rabbitDraw(GL10 gl, RabbitBase rabbitBase) {
     	// うさぎを描画
@@ -110,7 +122,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
 
     	// スライドする
     	if (rabbitBase.nextFlg == 1) {
-    		rabbitBase.movePosX -= 30;
+    		rabbitBase.movePosX -= MOVE_SPEED;
     		if (rabbitBase.startPosX - rabbitBase.movePosX >= width) {
     			rabbitBase.movePosX = rabbitBase.startPosX - width;
     			rabbitBase.startPosX = Math.abs(rabbitBase.movePosX);
@@ -125,7 +137,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     }
 
     /*
-     * ひげの判定をするクラス
+     * ひげの判定をするメソッド
      */
     static void drawSuccessFailure(GL10 gl)
     {
@@ -139,7 +151,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     }
 
     /*
-     * スコアボードを描画するクラス
+     * スコアボードを描画するメソッド
      */
     static void drawScoreborad(GL10 gl)
     {
@@ -148,7 +160,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     }
 
     /*
-     * タイムサイクルを管理するクラス
+     * タイムサイクルを管理するメソッド
      */
     static void cycleTime(GL10 gl)
     {
@@ -178,7 +190,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     			}
     		}
     	}
-    	if (RAP_TIME*4 < rapTime - startTime && ngcnt < 3) {
+    	if (RAP_TIME*4 < rapTime - startTime && ngcnt < 3 && okcnt != SPEEDUP_CNT) { // XXX okcntの判定は無理やりなので後で調整
     		// 状態をリセットする
     		touchX = 0;
     		touchY = 0;
@@ -196,7 +208,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     }
 
     /*
-     * 長いひげを設定するクラス
+     * 長いひげを設定するメソッド
      */
     static void whiskersSetting()
     {
@@ -208,7 +220,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     }
 
     /*
-     * タッチしたタイミングを設定するクラス
+     * タッチしたタイミングを設定するメソッド
      */
     static void setTouchTime()
     {
@@ -216,7 +228,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     }
 
     /*
-     * ひげを動かしたタイミングを設定するクラス
+     * ひげを動かしたタイミングを設定するメソッド
      */
     static void setMoveTime()
     {
@@ -224,12 +236,12 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     }
 
     /*
-     * ひげを抜いたタイミングを判定するクラス
+     * ひげを抜いたタイミングを判定するメソッド
      */
     static void judgmentTiming(GL10 gl, SoundPool soundPool, RabbitBase rabbitBase1, RabbitBase rabbitBase2)
     {
     	// タッチした瞬間のタイミングを判定
-    	if (RAP_TIME*3-200 < touchTime - startTime && touchTime - startTime < RAP_TIME*3+200) {
+    	if (RAP_TIME*3-MARGIN_TIME < touchTime - startTime && touchTime - startTime < RAP_TIME*3+MARGIN_TIME) {
     		switch (longPos) {
     		case 0: // 左上
     			if (x_left-40*scale < moveX2 && moveX2 < x_left+80*scale && y_top-30*scale < moveY2 && moveY2 < y_top+30*scale) {
@@ -254,7 +266,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     		}
     	}
     	// ひげを抜いた時のタイミングの判定
-    	if (RAP_TIME*3-200 < moveTime - startTime && moveTime - startTime < RAP_TIME*3+400) {
+    	if (RAP_TIME*3-MARGIN_TIME < moveTime - startTime && moveTime - startTime < RAP_TIME*3+MARGIN_TIME*2) {
     		switch (longPos) {
     		case 0: // 左上
     			if (x_left-80*scale < moveX2 && moveX2 < x_left+40*scale && y_top-30*scale < moveY2 && moveY2 < y_top+30*scale) {
@@ -279,7 +291,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     		}
     	}
 
-    	if (RAP_TIME*3+400 < rapTime - startTime) {
+    	if (RAP_TIME*3+MARGIN_TIME*2 < rapTime - startTime) {
         	// 判定によって、笑顔か不満顔かを描画
         	if(judgeflg == 0) {
     			if (judge1 == OK && judge2 == OK) {
@@ -307,7 +319,20 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     		}
     	}
 
-    	if (RAP_TIME*3+500 < rapTime - startTime && ngcnt < 3) {
+    	if (RAP_TIME*6 < rapTime - startTime && okcnt == SPEEDUP_CNT) { // XXX okcntの判定は無理やりなので後で調整
+        	gameStartTime = System.currentTimeMillis();
+        	RabbitDrawer.initRabbitDrawer(rabbitBase1);
+        	RabbitDrawer.initRabbitDrawer(rabbitBase2);
+        	touchX = 0;
+        	touchY = 0;
+    		up++;
+    		SPEEDUP_CNT = speedup_cnt[up];
+    		RAP_TIME -= 100;
+    		MARGIN_TIME -= 30;
+    		MOVE_SPEED += 10;
+    	}
+
+    	if (RAP_TIME*3+MARGIN_TIME*2+100 < rapTime - startTime && ngcnt < 3 && okcnt != SPEEDUP_CNT) { // XXX okcntの判定は無理やりなので後で調整
     		rabbitBase1.nextFlg = 1;
     		rabbitBase2.nextFlg = 1;
     	}
