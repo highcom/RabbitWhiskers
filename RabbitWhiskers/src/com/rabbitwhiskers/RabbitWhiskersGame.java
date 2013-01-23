@@ -267,28 +267,28 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
     			tempo0 = 1;
     		}
     		if (up == 0) {
-    			TextureDrawer.drawTexture(gl, readyID, width/2, height/2, width, width, 0.0f, scale+readyScale, scale+readyScale);
+    			TextureDrawer.drawTexture(gl, readyID, width/2, height/2, width, width, 0.0f, 1.0f+readyScale, 1.0f+readyScale);
     		} else {
-    			TextureDrawer.drawTexture(gl, speedupID, width/2, height/2, width, width, 0.0f, scale+readyScale, scale+readyScale);
+    			TextureDrawer.drawTexture(gl, speedupID, width/2, height/2, width, width, 0.0f, 1.0f, 1.0f);
     		}
     	} else if (gameRapTime - gameStartTime <= READY_TIME + RAP_TIME) { // 1を描画
     		if (tempo1 == 0) {
     			soundPool.play(setempo, (float)volume, (float)volume, 0, 0, 1.0f);
     			tempo1 = 1;
     		}
-    		TextureDrawer.drawTexture(gl, oneID, width/2, height/2, width, width, 0.0f, scale, scale);
+    		TextureDrawer.drawTexture(gl, oneID, width/2, height/2, width, width, 0.0f, 1.0f, 1.0f);
     	} else if (READY_TIME + RAP_TIME < gameRapTime - gameStartTime && gameRapTime - gameStartTime <= READY_TIME + RAP_TIME*2) { // 2を描画
     		if (tempo2 == 0) {
     			soundPool.play(setempo, (float)volume, (float)volume, 0, 0, 1.0f);
     			tempo2 = 1;
     		}
-    		TextureDrawer.drawTexture(gl, twoID, width/2, height/2, width, width, 0.0f, scale, scale);
+    		TextureDrawer.drawTexture(gl, twoID, width/2, height/2, width, width, 0.0f, 1.0f, 1.0f);
     	} else if (READY_TIME + RAP_TIME*2 < gameRapTime - gameStartTime && gameRapTime - gameStartTime <= READY_TIME + RAP_TIME*3) { // startを描画
     		if (tempo3 == 0) {
     			soundPool.play(sesyu, (float)volume, (float)volume, 0, 0, 1.0f);
     			tempo3 = 1;
     		}
-    		TextureDrawer.drawTexture(gl, startID, width/2, height/2, width, width, 0.0f, scale, scale);
+    		TextureDrawer.drawTexture(gl, startID, width/2, height/2, width, width, 0.0f, 1.0f, 1.0f);
     	} else {
     		gameState = PLAYING;
     		RabbitDrawer.cycleTime(gl);

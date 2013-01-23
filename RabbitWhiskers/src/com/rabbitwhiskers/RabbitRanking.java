@@ -37,6 +37,7 @@ public class RabbitRanking extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.rabbit_whiskers_ranking);
 
+		// ラインを引く
 		TextView lineView1 = (TextView) findViewById(R.id.lineView1);
 		lineView1.setBackgroundResource(R.layout.line);
 		TextView lineView2 = (TextView) findViewById(R.id.lineView2);
@@ -133,6 +134,7 @@ public class RabbitRanking extends Activity {
 
 		Button btnBack = (Button)findViewById(R.id.back_button);
 		btnBack.setTypeface(tf);
+		btnBack.setTextSize(20.0f);
 		btnBack.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				finish();
