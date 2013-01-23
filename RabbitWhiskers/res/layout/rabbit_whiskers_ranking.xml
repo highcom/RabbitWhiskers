@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <TextView
+        android:id="@+id/RankView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Ranking"
+        android:textSize="64dp"
+        tools:context=".RabbitRanking" />
+
+    <TextView
+        android:id="@+id/NowView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/RankView"
+        android:layout_marginTop="3dp"
+        android:text=""
+        android:textSize="32dp"
+        tools:context=".Now" />
+
+    <TextView
+        android:id="@+id/lineView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/NowView"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/HeadView_1st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/lineView1"
+        android:layout_toLeftOf="@+id/RankView_1st"
+        android:gravity="right"
+        android:text="1st : "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="48dp" />
+
+    <TextView
+        android:id="@+id/lineView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/HeadView_1st"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/HeadView_2nd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/HeadView_1st"
+        android:layout_below="@+id/lineView2"
+        android:gravity="right"
+        android:text="2nd : "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="48dp" />
+
+    <TextView
+        android:id="@+id/RankView_2nd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/HeadView_2nd"
+        android:layout_toRightOf="@+id/HeadView_2nd"
+        android:text="888"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="48dp" />
+
+    <TextView
+        android:id="@+id/lineView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/HeadView_2nd"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/HeadView_3rd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/HeadView_2nd"
+        android:layout_below="@+id/lineView3"
+        android:gravity="right"
+        android:text="3rd : "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="48dp" />
+
+    <TextView
+        android:id="@+id/RankView_3rd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/HeadView_3rd"
+        android:layout_toRightOf="@+id/HeadView_3rd"
+        android:text="777"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="48dp" />
+
+    <TextView
+        android:id="@+id/lineView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/HeadView_3rd"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="Back" />
+
+    <TextView
+        android:id="@+id/RankView_1st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lineView1"
+        android:layout_centerHorizontal="true"
+        android:text="999"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="48dp" />
+
+</RelativeLayout>

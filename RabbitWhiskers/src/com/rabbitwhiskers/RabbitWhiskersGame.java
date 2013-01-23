@@ -251,6 +251,9 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
     	gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
     	// 背景を描画
     	TextureDrawer.drawTexture(gl, backgroundID, width/2, height/2, width, height, 0.0f, 1.0f, 1.0f);
+    	// スコアボードを描画
+    	RabbitDrawer.drawSuccessFailure(gl);
+    	RabbitDrawer.drawScoreborad(gl);
     	gameRapTime = System.currentTimeMillis();
 
     	if (gameRapTime - gameStartTime <= READY_TIME) { // readyを描画
@@ -289,8 +292,6 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
     	} else {
     		gameState = PLAYING;
     		RabbitDrawer.cycleTime(gl);
-    		RabbitDrawer.drawSuccessFailure(gl);
-    		RabbitDrawer.drawScoreborad(gl);
         	RabbitDrawer.judgmentTiming(gl, soundPool, rabbitBase1, rabbitBase2);
         	 // うさぎを描画
     		RabbitDrawer.rabbitDraw(gl, rabbitBase1);
