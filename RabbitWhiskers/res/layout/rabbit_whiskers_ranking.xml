@@ -125,16 +125,20 @@
 
     <Button
         android:id="@+id/back_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="63dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:background="@layout/original_button"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp"
         android:text="Back" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:myapp="http://schemas.android.com/apk/res/com.rabbitwhiskers"
+        android:id="@+id/linearLayout"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >    </LinearLayout>
 
 </RelativeLayout>

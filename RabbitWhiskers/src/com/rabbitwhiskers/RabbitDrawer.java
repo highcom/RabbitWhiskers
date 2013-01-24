@@ -13,7 +13,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
 
 	private static int longPos;
 	private static int[] whiskersID = {0, 0, 0, 0};
-	private static int[] speedup_cnt = {3, 10, 15, 20, -1};
+	private static int[] speedup_cnt = {10, 30, 50, 100, -1};
 	private static long startTime;
 	private static long touchTime;
 	private static long moveTime;
@@ -22,6 +22,9 @@ public class RabbitDrawer extends RabbitWhiskersGame {
 	private static int judge2;
 	private static int judgeflg;
 
+	/*
+	 * うさぎの状態を初期化するメソッド
+	 */
 	static void initRabbitDrawer(RabbitBase rabbitBase) {
 		longPos = 0;
 		startTime = 0;
@@ -137,7 +140,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     }
 
     /*
-     * ひげの判定をするメソッド
+     * スコアを表示するメソッド
      */
     static void drawSuccessFailure(GL10 gl)
     {
@@ -244,22 +247,22 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     	if (RAP_TIME*3-MARGIN_TIME < touchTime - startTime && touchTime - startTime < RAP_TIME*3+MARGIN_TIME) {
     		switch (longPos) {
     		case 0: // 左上
-    			if (x_left-40*scale < moveX2 && moveX2 < x_left+80*scale && y_top-30*scale < moveY2 && moveY2 < y_top+30*scale) {
+    			if (x_left-40*scale < touchX && touchX < x_left+80*scale && y_top-30*scale < touchY && touchY < y_top+30*scale) {
     				judge1 = OK;
     			}
     			break;
     		case 1: // 右上
-    			if (x_right-80*scale < moveX2 && moveX2 < x_right+40*scale && y_top-30*scale < moveY2 && moveY2 < y_top+30*scale) {
+    			if (x_right-80*scale < touchX && touchX < x_right+40*scale && y_top-30*scale < touchY && touchY < y_top+30*scale) {
     				judge1 = OK;
     			}
     			break;
     		case 2: // 左下
-    			if (x_left-40*scale < moveX2 && moveX2 < x_left+80*scale && y_under-30*scale < moveY2 && moveY2 < y_under+30*scale) {
+    			if (x_left-40*scale < touchX && touchX < x_left+80*scale && y_under-30*scale < touchY && touchY < y_under+30*scale) {
     				judge1 = OK;
     			}
     			break;
     		case 3: // 右上
-    			if (x_right-80*scale < moveX2 && moveX2 < x_right+40*scale && y_under-30*scale < moveY2 && moveY2 < y_under+30*scale) {
+    			if (x_right-80*scale < touchX && touchX < x_right+40*scale && y_under-30*scale < touchY && touchY < y_under+30*scale) {
     				judge1 = OK;
     			}
     			break;

@@ -124,7 +124,7 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	public RabbitWhiskersGame() {
 		RAP_TIME = 700;
 		MARGIN_TIME = 200;
-		SPEEDUP_CNT = 3;
+		SPEEDUP_CNT = 10;
 		MOVE_SPEED = 30;
 		up = 0;
 		okcnt = 0;

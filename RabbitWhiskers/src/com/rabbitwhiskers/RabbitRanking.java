@@ -16,12 +16,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
 
 public class RabbitRanking extends Activity {
 	// ランキングのファイル
 	private final String RANK_FILE = "ranking.dat";
 	private final int RANK_MAX = 3;
+	private AdView adView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,14 @@ public class RabbitRanking extends Activity {
 		// タイトルバーを消す
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.rabbit_whiskers_ranking);
+
+		LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayout);
+		// adView を作成する
+		adView = new AdView(this, AdSize.BANNER, "a151012a8bf229d");
+		layout.addView(adView);
+		AdRequest request = new AdRequest();
+
+		adView.loadAd(request);
 
 		// ラインを引く
 		TextView lineView1 = (TextView) findViewById(R.id.lineView1);
@@ -141,4 +155,10 @@ public class RabbitRanking extends Activity {
 			}
 		});
 	}
+
+	@Override
+	public void onDestroy() {
+		adView.destroy();
+		super.onDestroy();
+     }
 }
