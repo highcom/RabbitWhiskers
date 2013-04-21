@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rabbitwhiskers"
-    android:versionCode="1"
+    android:versionCode="2"
     android:installLocation="auto"
     android:versionName="1.1" >
 
