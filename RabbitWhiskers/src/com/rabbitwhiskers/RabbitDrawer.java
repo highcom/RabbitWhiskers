@@ -42,7 +42,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
 		rabbitBase.y3 = y_under;
 		rabbitBase.x4 = x_right;
 		rabbitBase.y4 = y_under;
-		rabbitBase.rabbitBaseID = nomalRabbitID;
+		rabbitBase.rabbitBaseID = nomalRabbitID[rabbitBase.rabbitKind];
 		tempo0 = 0;
 		tempo1 = 0;
 		tempo2 = 0;
@@ -52,6 +52,7 @@ public class RabbitDrawer extends RabbitWhiskersGame {
 	 * うさぎを描画するメソッド
 	 */
     static void rabbitDraw(GL10 gl, RabbitBase rabbitBase) {
+    	int num;
     	// うさぎを描画
     	TextureDrawer.drawTextureRabbit(gl, rabbitBase.rabbitBaseID, width/2+rabbitBase.movePosX, height/2-POSITION*scale, R_B_WIDTH, R_B_HEIGHT, 0.0f, scale, scale);
     	// ひげを描画
@@ -127,11 +128,16 @@ public class RabbitDrawer extends RabbitWhiskersGame {
     	if (rabbitBase.nextFlg == 1) {
     		rabbitBase.movePosX -= MOVE_SPEED;
     		if (rabbitBase.startPosX - rabbitBase.movePosX >= width) {
+    			// 画面に表示されてない方は、うさぎの種類を変える
+    			if (rabbitBase.movePosX  != 0) {
+    				num = (int)(Math.random()*100.0d)%R_KIND;
+    				rabbitBase.rabbitKind = num;
+    			}
     			rabbitBase.movePosX = rabbitBase.startPosX - width;
     			rabbitBase.startPosX = Math.abs(rabbitBase.movePosX);
     			rabbitBase.movePosX = rabbitBase.startPosX;
     			rabbitBase.nextFlg = 0;
-    			rabbitBase.rabbitBaseID = nomalRabbitID;
+    			rabbitBase.rabbitBaseID = nomalRabbitID[rabbitBase.rabbitKind];
     			tempo1 = 0;
     			tempo2 = 0;
     			tempo3 = 0;
@@ -301,20 +307,20 @@ public class RabbitDrawer extends RabbitWhiskersGame {
         			okcnt++;
         			// 画面に表示されているうさぎだけ笑顔にする。
         			if (rabbitBase1.startPosX == 0) {
-            			rabbitBase1.rabbitBaseID = okRabbitID;
+            			rabbitBase1.rabbitBaseID = okRabbitID[rabbitBase1.rabbitKind];
         			}
         			if (rabbitBase2.startPosX == 0) {
-            			rabbitBase2.rabbitBaseID = okRabbitID;
+            			rabbitBase2.rabbitBaseID = okRabbitID[rabbitBase2.rabbitKind];
         			}
     				soundPool.play(senyaa, (float)volume, (float)volume, 0, 0, 1.0f);
     			} else {
     				ngcnt++;
         			// 画面に表示されているうさぎだけうーんにする。
         			if (rabbitBase1.startPosX == 0) {
-            			rabbitBase1.rabbitBaseID = ngRabbitID;
+            			rabbitBase1.rabbitBaseID = ngRabbitID[rabbitBase1.rabbitKind];
         			}
         			if (rabbitBase2.startPosX == 0) {
-            			rabbitBase2.rabbitBaseID = ngRabbitID;
+            			rabbitBase2.rabbitBaseID = ngRabbitID[rabbitBase2.rabbitKind];
         			}
     				soundPool.play(seita, (float)volume, (float)volume, 0, 0, 1.0f);
     			}

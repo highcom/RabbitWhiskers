@@ -1,5 +1,9 @@
 package com.rabbitwhiskers;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,9 +12,12 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class RabbitWhiskersMenu extends Activity {
+
+	private AdView adView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -18,6 +25,14 @@ public class RabbitWhiskersMenu extends Activity {
         // タイトルバーを消す
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.rabbit_whiskers_menu);
+
+		LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayout);
+		// adView を作成する
+		adView = new AdView(this, AdSize.BANNER, "a151012a8bf229d");
+		layout.addView(adView);
+		AdRequest request = new AdRequest();
+
+		adView.loadAd(request);
 
         // フォントを取得
         Typeface tf = Typeface.createFromAsset(getAssets(), "GlassAntiqua-Regular.ttf");
@@ -56,4 +71,10 @@ public class RabbitWhiskersMenu extends Activity {
         getMenuInflater().inflate(R.menu.rabbit_whiskers_menu, menu);
         return true;
     }
+
+	@Override
+	public void onDestroy() {
+		adView.destroy();
+		super.onDestroy();
+     }
 }

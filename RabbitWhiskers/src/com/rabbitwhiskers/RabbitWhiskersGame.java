@@ -50,9 +50,9 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	static int twoID;
 	static int startID;
 	static int boardID;
-	static int nomalRabbitID;
-	static int okRabbitID;
-	static int ngRabbitID;
+	static int[] nomalRabbitID;
+	static int[] okRabbitID;
+	static int[] ngRabbitID;
 	static int longWhiskersID;
 	static int shortWhiskersID;
 	static int numberID;
@@ -73,8 +73,10 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 
 	// うさぎの設定情報を保持するクラス
 	class RabbitBase {
+		int rabbitKind;
 		// ひげの初期位置を設定
 		public RabbitBase() {
+			rabbitKind = 0;
     		x1 = x_left;
     		y1 = y_top;
     		x2 = x_right;
@@ -117,6 +119,8 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
 	static final int W_BASE_X = 150;
 	// うさぎの表示位置調整
 	static final float POSITION = 180f;
+	// うさぎの種類
+	static final int R_KIND = 6;
 
 	/*
 	 * コンストラクタ
@@ -185,9 +189,6 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
         rabbitBase2 = new RabbitBase();
         rabbitBase2.startPosX = width;
         rabbitBase2.movePosX = width;
-        // ステータスの初期化
-        RabbitDrawer.initRabbitDrawer(rabbitBase1);
-        RabbitDrawer.initRabbitDrawer(rabbitBase2);
 
         // タイトルバーを消す
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -325,6 +326,8 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
      * @see android.opengl.GLSurfaceView.Renderer#onSurfaceCreated(javax.microedition.khronos.opengles.GL10, javax.microedition.khronos.egl.EGLConfig)
      */
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+    	// うさぎの種類に対する番号
+    	int num;
     	// ディザを無効化
     	gl.glDisable(GL10.GL_DITHER);
     	// カラーとテクスチャ座標の補完精度を最も効率的なものに指定
@@ -348,16 +351,42 @@ public class RabbitWhiskersGame extends Activity implements GLSurfaceView.Render
     	twoID = TextureLoader.loadTexture(gl, this, R.drawable.two);
     	startID = TextureLoader.loadTexture(gl, this, R.drawable.start);
     	boardID = TextureLoader.loadTexture(gl, this, R.drawable.board);
-    	nomalRabbitID = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base);
-    	rabbitBase1.rabbitBaseID = nomalRabbitID;
-    	rabbitBase2.rabbitBaseID = nomalRabbitID;
-    	okRabbitID = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ok);
-    	ngRabbitID = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ng);
+    	// 全うさぎの顔を読み込み
+    	nomalRabbitID = new int[R_KIND];
+    	okRabbitID = new int[R_KIND];
+    	ngRabbitID = new int[R_KIND];
+    	nomalRabbitID[0] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_0);
+    	nomalRabbitID[1] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_1);
+    	nomalRabbitID[2] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_2);
+    	nomalRabbitID[3] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_3);
+    	nomalRabbitID[4] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_4);
+    	nomalRabbitID[5] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_5);
+    	okRabbitID[0] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ok_0);
+    	okRabbitID[1] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ok_1);
+    	okRabbitID[2] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ok_2);
+    	okRabbitID[3] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ok_3);
+    	okRabbitID[4] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ok_4);
+    	okRabbitID[5] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ok_5);
+    	ngRabbitID[0] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ng_0);
+    	ngRabbitID[1] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ng_1);
+    	ngRabbitID[2] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ng_2);
+    	ngRabbitID[3] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ng_3);
+    	ngRabbitID[4] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ng_4);
+    	ngRabbitID[5] = TextureLoader.loadTexture(gl, this, R.drawable.rabbit_base_ng_5);
+    	num = (int)(Math.random()*100.0d)%R_KIND;
+    	rabbitBase1.rabbitKind = num;
+    	rabbitBase1.rabbitBaseID = nomalRabbitID[num];
+    	num = (int)(Math.random()*100.0d)%R_KIND;
+    	rabbitBase2.rabbitKind = num;
+    	rabbitBase2.rabbitBaseID = nomalRabbitID[num];
     	longWhiskersID = TextureLoader.loadTexture(gl, this, R.drawable.long_whiskers);
     	shortWhiskersID = TextureLoader.loadTexture(gl, this, R.drawable.short_whiskers);
     	numberID = TextureLoader.loadTexture(gl, this, R.drawable.number);
     	ngID = TextureLoader.loadTexture(gl, this, R.drawable.ng);
     	shuID = TextureLoader.loadTexture(gl, this, R.drawable.shu);
+        // ステータスの初期化
+        RabbitDrawer.initRabbitDrawer(rabbitBase1);
+        RabbitDrawer.initRabbitDrawer(rabbitBase2);
 
     	// 開始時間を取得
     	gameStartTime = System.currentTimeMillis();
