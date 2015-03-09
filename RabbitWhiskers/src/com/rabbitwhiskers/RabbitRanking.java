@@ -16,18 +16,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.ads.Ad;
+import com.google.ads.AdListener;
 import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
+import com.google.ads.AdRequest.ErrorCode;
+import com.google.ads.InterstitialAd;
 
-public class RabbitRanking extends Activity {
+public class RabbitRanking extends Activity implements AdListener{
 	// ランキングのファイル
 	private final String RANK_FILE = "ranking.dat";
 	private final int RANK_MAX = 3;
-	private AdView adView;
+
+	private String unitID = "ca-app-pub-3217012767112748/6007027511";
+	private InterstitialAd interstitialAd;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -43,13 +46,14 @@ public class RabbitRanking extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.rabbit_whiskers_ranking);
 
-		LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayout);
-		// adView を作成する
-		adView = new AdView(this, AdSize.BANNER, "a151012a8bf229d");
-		layout.addView(adView);
-		AdRequest request = new AdRequest();
-
-		adView.loadAd(request);
+		// インタースティシャルを作成する。
+		interstitialAd = new InterstitialAd(this, unitID);
+	    // 広告リクエストを作成する。
+	    AdRequest adRequest = new AdRequest();
+	    // インタースティシャルの読み込みを開始する。
+	    interstitialAd.loadAd(adRequest);
+	    // Ad Listener を設定して下のコールバックを使用する
+	    interstitialAd.setAdListener((AdListener) this);
 
 		// ラインを引く
 		TextView lineView1 = (TextView) findViewById(R.id.lineView1);
@@ -158,7 +162,41 @@ public class RabbitRanking extends Activity {
 
 	@Override
 	public void onDestroy() {
-		adView.destroy();
 		super.onDestroy();
      }
+
+	@Override
+	public void onDismissScreen(Ad arg0) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+	@Override
+	public void onFailedToReceiveAd(Ad arg0, ErrorCode arg1) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+	@Override
+	public void onLeaveApplication(Ad arg0) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+	@Override
+	public void onPresentScreen(Ad arg0) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+	@Override
+	public void onReceiveAd(Ad ad) {
+	    if (ad == interstitialAd) {
+	    	// 25%の確立で広告を表示させる
+	    	if ((int)(Math.random()*100.0d)%4 == 0)
+	    	{
+	    		interstitialAd.show();
+	    	}
+	    }
+	}
 }

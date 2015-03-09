@@ -28,7 +28,8 @@ public class RabbitWhiskersMenu extends Activity {
 
 		LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayout);
 		// adView を作成する
-		adView = new AdView(this, AdSize.BANNER, "a151012a8bf229d");
+		adView = new AdView(this, AdSize.BANNER, "ca-app-pub-3217012767112748/9825611110");
+		//adView = new AdView(this, AdSize.BANNER, "a151012a8bf229d");
 		layout.addView(adView);
 		AdRequest request = new AdRequest();
 
