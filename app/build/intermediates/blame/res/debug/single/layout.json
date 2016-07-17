@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\layout\\rabbit_whiskers_ranking.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\layout\\rabbit_whiskers_ranking.xml"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\layout\\original_button.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\layout\\original_button.xml"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\layout\\rabbit_whiskers_menu.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\layout\\rabbit_whiskers_menu.xml"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\layout\\line.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\layout\\line.xml"
+    }
+]

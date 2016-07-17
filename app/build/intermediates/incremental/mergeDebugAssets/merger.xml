@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\Android\AndroidstudioProjects\RabbitWhiskers\app\src\main\assets"><file name="GlassAntiqua-Regular.ttf" path="D:\Android\AndroidstudioProjects\RabbitWhiskers\app\src\main\assets\GlassAntiqua-Regular.ttf"/></source><source path="D:\Android\AndroidstudioProjects\RabbitWhiskers\app\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\Android\AndroidstudioProjects\RabbitWhiskers\app\src\debug\assets"/></dataSet></merger>

@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\raw\\rabbit_nyaa.ogg",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\raw\\rabbit_nyaa.ogg"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\raw\\tempo_speedup.ogg",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\raw\\tempo_speedup.ogg"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\raw\\rabbit_ita.ogg",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\raw\\rabbit_ita.ogg"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\raw\\tempo_syu.ogg",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\raw\\tempo_syu.ogg"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\raw\\tempo.ogg",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\raw\\tempo.ogg"
+    }
+]
