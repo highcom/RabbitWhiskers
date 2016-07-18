@@ -4,16 +4,20 @@
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\rabbit_base_4.png"
     },
     {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_dark.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_plus_signin_btn_text_dark.xml"
+    },
+    {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rabbit_base_ng_1.png",
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\rabbit_base_ng_1.png"
     },
     {
-        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\two.png",
-        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\two.png"
-    },
-    {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\background_game.png",
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\background_game.png"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\two.png",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\two.png"
     },
     {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rabbit_base_ok_4.png",
@@ -32,6 +36,10 @@
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\rabbit_base_1.png"
     },
     {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_light.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_plus_signin_btn_icon_light.xml"
+    },
+    {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rabbit_base_ng_5.png",
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\rabbit_base_ng_5.png"
     },
@@ -42,6 +50,10 @@
     {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\long_whiskers.png",
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\long_whiskers.png"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_dark.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_plus_signin_btn_icon_dark.xml"
     },
     {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rabbit_base_ok_2.png",
@@ -56,8 +68,16 @@
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\rabbit_base_2.png"
     },
     {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_light.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_google_signin_btn_text_light.xml"
+    },
+    {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rabbit_base_ng_2.png",
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\rabbit_base_ng_2.png"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_dark.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_google_signin_btn_icon_dark.xml"
     },
     {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rabbit_base_ok_5.png",
@@ -84,6 +104,10 @@
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\ng.png"
     },
     {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_light.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_google_signin_btn_icon_light.xml"
+    },
+    {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\shu.png",
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\shu.png"
     },
@@ -98,6 +122,10 @@
     {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\number.png",
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\number.png"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_light.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_plus_signin_btn_text_light.xml"
     },
     {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\start.png",
@@ -126,5 +154,9 @@
     {
         "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rabbit_base_ok_0.png",
         "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\src\\main\\res\\drawable\\rabbit_base_ok_0.png"
+    },
+    {
+        "merged": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_dark.xml",
+        "source": "D:\\Android\\AndroidstudioProjects\\RabbitWhiskers\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_google_signin_btn_text_dark.xml"
     }
 ]

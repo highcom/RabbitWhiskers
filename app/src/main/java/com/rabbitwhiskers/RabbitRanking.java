@@ -18,19 +18,22 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.ads.Ad;
-import com.google.ads.AdListener;
-import com.google.ads.AdRequest;
-import com.google.ads.AdRequest.ErrorCode;
-import com.google.ads.InterstitialAd;
+//import com.google.ads.Ad;
+//import com.google.ads.AdListener;
+//import com.google.ads.AdRequest;
+//import com.google.ads.AdRequest.ErrorCode;
+//import com.google.ads.InterstitialAd;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
-public class RabbitRanking extends Activity implements AdListener{
+public class RabbitRanking extends Activity{
 	// ランキングのファイル
 	private final String RANK_FILE = "ranking.dat";
 	private final int RANK_MAX = 3;
 
-	private String unitID = "ca-app-pub-3217012767112748/6007027511";
-	private InterstitialAd interstitialAd;
+	private AdView mAdView;
+	//private String unitID = "ca-app-pub-3217012767112748/6007027511";
+	//private InterstitialAd interstitialAd;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,24 +49,17 @@ public class RabbitRanking extends Activity implements AdListener{
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.rabbit_whiskers_ranking);
 
+		mAdView = (AdView) findViewById(R.id.adView);
+		AdRequest adRequest = new AdRequest.Builder().build();
+		mAdView.loadAd(adRequest);
 		// インタースティシャルを作成する。
-		interstitialAd = new InterstitialAd(this, unitID);
+		//interstitialAd = new InterstitialAd(this, unitID);
 	    // 広告リクエストを作成する。
-	    AdRequest adRequest = new AdRequest();
+	    //AdRequest adRequest = new AdRequest();
 	    // インタースティシャルの読み込みを開始する。
-	    interstitialAd.loadAd(adRequest);
+	    //interstitialAd.loadAd(adRequest);
 	    // Ad Listener を設定して下のコールバックを使用する
-	    interstitialAd.setAdListener((AdListener) this);
-
-		// ラインを引く
-		TextView lineView1 = (TextView) findViewById(R.id.lineView1);
-		lineView1.setBackgroundResource(R.layout.line);
-		TextView lineView2 = (TextView) findViewById(R.id.lineView2);
-		lineView2.setBackgroundResource(R.layout.line);
-		TextView lineView3 = (TextView) findViewById(R.id.lineView3);
-		lineView3.setBackgroundResource(R.layout.line);
-		TextView lineView4 = (TextView) findViewById(R.id.lineView4);
-		lineView4.setBackgroundResource(R.layout.line);
+	    //interstitialAd.setAdListener((AdListener) this);
 
 		// フォントを取得
 		Typeface tf = Typeface.createFromAsset(getAssets(), "GlassAntiqua-Regular.ttf");
@@ -162,41 +158,7 @@ public class RabbitRanking extends Activity implements AdListener{
 
 	@Override
 	public void onDestroy() {
+		mAdView.destroy();
 		super.onDestroy();
      }
-
-	@Override
-	public void onDismissScreen(Ad arg0) {
-		// TODO 自動生成されたメソッド・スタブ
-
-	}
-
-	@Override
-	public void onFailedToReceiveAd(Ad arg0, ErrorCode arg1) {
-		// TODO 自動生成されたメソッド・スタブ
-
-	}
-
-	@Override
-	public void onLeaveApplication(Ad arg0) {
-		// TODO 自動生成されたメソッド・スタブ
-
-	}
-
-	@Override
-	public void onPresentScreen(Ad arg0) {
-		// TODO 自動生成されたメソッド・スタブ
-
-	}
-
-	@Override
-	public void onReceiveAd(Ad ad) {
-	    if (ad == interstitialAd) {
-	    	// 25%の確立で広告を表示させる
-	    	if ((int)(Math.random()*100.0d)%4 == 0)
-	    	{
-	    		interstitialAd.show();
-	    	}
-	    }
-	}
 }
