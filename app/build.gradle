@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 16
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "com.rabbitwhiskers"
-        minSdkVersion 9
-        targetSdkVersion 16
+        minSdkVersion 14
+        targetSdkVersion 29
     }
 
     buildTypes {
@@ -18,23 +18,18 @@ android {
     }
 
     applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')) {
-                // Rename APK
-                def newName
-                if (variant.buildType.name.equals("release")) {
-                    newName = "RabbitWhiskers.apk"
-                } else {
-                    newName = "RabbitWhiskersDebug.apk"
-                }
-                output.outputFile = new File(output.outputFile.parent, newName)
+        if (variant.buildType.name.equals("release")) {
+            // releaseビルドのみ、ファイル名にVesionNameとビルド時間を付与
+            variant.outputs.all {
+                def newName = "RabbitWhiskers.apk"
+                outputFileName = newName
             }
         }
     }
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:18.0.0'
+    implementation 'com.android.support:support-v4:18.0.0'
     //compile files('libs/GoogleAdMobAdsSdk-6.2.1.jar')
-    compile 'com.google.android.gms:play-services-ads:9.2.0'
+    implementation 'com.google.android.gms:play-services-ads:9.2.0'
 }
