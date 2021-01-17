@@ -1,0 +1,59 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.rabbitwhiskers"
+4    android:installLocation="auto"
+5    android:versionCode="5"
+6    android:versionName="1.4" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="14"
+9-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+10        android:targetSdkVersion="29" />
+10-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+11
+12    <application
+12-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:5:5-27:19
+13        android:icon="@drawable/ic_launcher"
+13-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:6:9-45
+14        android:label="@string/app_name"
+14-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:7:9-41
+15        android:theme="@style/AppTheme" >
+15-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:8:9-40
+16        <activity
+16-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:9:9-17:20
+17            android:name="com.rabbitwhiskers.RabbitWhiskersMenu"
+17-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:10:13-47
+18            android:label="@string/title_activity_rabbit_whiskers_menu" >
+18-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:11:13-72
+19            <intent-filter>
+19-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:12:13-16:29
+20                <action android:name="android.intent.action.MAIN" />
+20-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:13:17-69
+20-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:13:25-66
+21
+22                <category android:name="android.intent.category.LAUNCHER" />
+22-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:15:17-77
+22-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:15:27-74
+23            </intent-filter>
+24        </activity>
+25        <activity
+25-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:18:9-21:20
+26            android:name="com.rabbitwhiskers.RabbitWhiskersGame"
+26-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:18:19-53
+27            android:label="@string/app_name"
+27-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:20:13-45
+28            android:screenOrientation="portrait" >
+28-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:19:13-49
+29        </activity>
+30        <activity
+30-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:22:9-25:20
+31            android:name="com.rabbitwhiskers.RabbitRanking"
+31-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:22:19-48
+32            android:label="@string/app_name"
+32-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:24:13-45
+33            android:screenOrientation="portrait" >
+33-->/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:23:13-49
+34        </activity>
+35    </application>
+36
+37</manifest>

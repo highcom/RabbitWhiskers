@@ -8,36 +8,36 @@
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_ok_1.png"
     },
     {
-        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_ng_3.png.flat",
-        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_ng_3.png"
-    },
-    {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_speedup.png.flat",
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/speedup.png"
+    },
+    {
+        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_ng_3.png.flat",
+        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_ng_3.png"
     },
     {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/layout_original_button.xml.flat",
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/layout/original_button.xml"
     },
     {
-        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_1.png.flat",
-        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_1.png"
-    },
-    {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_ok_3.png.flat",
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_ok_3.png"
+    },
+    {
+        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_1.png.flat",
+        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_1.png"
     },
     {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_ng_5.png.flat",
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_ng_5.png"
     },
     {
-        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_3.png.flat",
-        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_3.png"
-    },
-    {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_one.png.flat",
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/one.png"
+    },
+    {
+        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_3.png.flat",
+        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_3.png"
     },
     {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_board.png.flat",
@@ -68,12 +68,12 @@
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/background_ranking.png"
     },
     {
-        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_4.png.flat",
-        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_4.png"
-    },
-    {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/raw_tempo_speedup.ogg.flat",
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/raw/tempo_speedup.ogg"
+    },
+    {
+        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_4.png.flat",
+        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_4.png"
     },
     {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_ng_1.png.flat",
@@ -136,12 +136,12 @@
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_5.png"
     },
     {
-        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
-        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable-hdpi/ic_launcher.png"
-    },
-    {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_ok_5.png.flat",
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_ok_5.png"
+    },
+    {
+        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable-hdpi/ic_launcher.png"
     },
     {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_long_whiskers.png.flat",
@@ -168,10 +168,6 @@
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/raw/rabbit_nyaa.ogg"
     },
     {
-        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_0.png.flat",
-        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_0.png"
-    },
-    {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable-xhdpi/ic_launcher.png"
     },
@@ -180,11 +176,15 @@
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/ready.png"
     },
     {
-        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/raw_tempo.ogg.flat",
-        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/raw/tempo.ogg"
+        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_rabbit_base_0.png.flat",
+        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/rabbit_base_0.png"
     },
     {
         "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/drawable_background_cover.png.flat",
         "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/drawable/background_cover.png"
+    },
+    {
+        "merged": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/build/intermediates/res/merged/debug/raw_tempo.ogg.flat",
+        "source": "/Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/res/raw/tempo.ogg"
     }
 ]

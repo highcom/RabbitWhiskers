@@ -1,0 +1,79 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:1:1-28:12
+	package
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:2:5-33
+		INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:1:1-28:12
+		INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:1:1-28:12
+		INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:1:11-69
+	android:installLocation
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:3:5-35
+application
+ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:5:5-27:19
+	android:label
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:7:9-41
+	android:icon
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:6:9-45
+	android:theme
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:8:9-40
+activity#com.rabbitwhiskers.RabbitWhiskersMenu
+ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:9:9-17:20
+	android:label
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:11:13-72
+	android:name
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:10:13-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:12:13-16:29
+action#android.intent.action.MAIN
+ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:13:17-69
+	android:name
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:13:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:15:17-77
+	android:name
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:15:27-74
+activity#com.rabbitwhiskers.RabbitWhiskersGame
+ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:18:9-21:20
+	android:screenOrientation
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:19:13-49
+	android:label
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:20:13-45
+	android:name
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:18:19-53
+activity#com.rabbitwhiskers.RabbitRanking
+ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:22:9-25:20
+	android:screenOrientation
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:23:13-49
+	android:label
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:24:13-45
+	android:name
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml:22:19-48
+uses-sdk
+INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+		ADDED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/kouichi/AndroidStudioProjects/RabbitWhiskers/app/src/main/AndroidManifest.xml
